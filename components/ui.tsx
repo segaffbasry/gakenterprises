@@ -31,15 +31,20 @@ export const LinkedIn = () => <svg viewBox="0 0 24 24" aria-hidden="true" classN
 export function Button({ href, children, tone = "blue", arrow, external, className = "" }: {
   href: string; children: ReactNode; tone?: "blue" | "white" | "black"; arrow?: boolean; external?: boolean; className?: string;
 }) {
+  return <a className={`btn btn-${tone}${arrow ? " btn-arrow" : ""} ${className}`} href={href} {...(external ? { target: "_blank", rel: "noopener" } : {})}>
+    <ButtonRow arrow={arrow}>{children}</ButtonRow>
+  </a>;
+}
+
+// The button's visual row on its own, for places that are already a link (the cursor follower, the form).
+export function ButtonRow({ children, arrow }: { children: ReactNode; arrow?: boolean }) {
   const h = arrow ? 44 : 36;
   const cap = <svg viewBox={`0 0 6 ${h}`} preserveAspectRatio="none" aria-hidden="true"><path d={`M0 0H6V${h}L0 ${h - 6}Z`} /></svg>;
-  return <a className={`btn btn-${tone}${arrow ? " btn-arrow" : ""} ${className}`} href={href} {...(external ? { target: "_blank", rel: "noopener" } : {})}>
-    <span className="btn-row">
-      <span className="btn-cap">{cap}</span>
-      <span className="btn-body"><span className="btn-label">{children}</span>{arrow && <Arrow />}</span>
-      <span className="btn-cap btn-cap-end">{cap}</span>
-    </span>
-  </a>;
+  return <span className="btn-row">
+    <span className="btn-cap">{cap}</span>
+    <span className="btn-body"><span className="btn-label">{children}</span>{arrow && <Arrow />}</span>
+    <span className="btn-cap btn-cap-end">{cap}</span>
+  </span>;
 }
 
 // SalesPatriot's small mono eyebrow: a filled index chip and a caption.

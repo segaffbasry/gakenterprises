@@ -2,7 +2,7 @@
 
 import type { FormEvent } from "react";
 import { useState } from "react";
-import { Arrow } from "@/components/ui";
+import { ButtonRow } from "@/components/ui";
 import { contact } from "@/lib/content";
 
 /* The live contact form posts to WordPress. This rebuild has no backend, so sending opens the visitor's
@@ -25,11 +25,7 @@ export function ContactForm() {
     <label className="full"><span className="mono">Message</span><textarea name="message" rows={6} required /></label>
     <div className="full form-foot">
       <button type="submit" className="btn btn-blue btn-arrow">
-        <span className="btn-row">
-          <span className="btn-cap"><svg viewBox="0 0 6 44" preserveAspectRatio="none" aria-hidden="true"><path d="M0 0H6V44L0 38Z" /></svg></span>
-          <span className="btn-body"><span className="btn-label">Send Message</span><Arrow /></span>
-          <span className="btn-cap btn-cap-end"><svg viewBox="0 0 6 44" preserveAspectRatio="none" aria-hidden="true"><path d="M0 0H6V44L0 38Z" /></svg></span>
-        </span>
+        <ButtonRow arrow>Send Message</ButtonRow>
       </button>
       <p className="mono" aria-live="polite">{sent ? "Your mail app should now be open." : "We will reply from " + contact.email}</p>
     </div>
