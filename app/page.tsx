@@ -29,16 +29,12 @@ export default function Home() {
   return <>
     <Hero />
 
-    {/* Our Clients, straight after the opening: the live logo strip as a moving marquee. */}
+    {/* Our Clients, straight after the opening: a slim strip, the label beside the live logos drifting past. */}
     <section className="clients-band" id="clients" aria-labelledby="clients-title">
-      <div className="wrap clients-head">
-        <div>
-          <Eyebrow index="01">Our Clients</Eyebrow>
-          <h2 id="clients-title" className="clients-title" data-rise>Our Clients</h2>
-        </div>
-        <p className="mono clients-count" data-rise>{String(clients.length).padStart(2, "0")} clients</p>
+      <div className="wrap clients-row">
+        <h2 id="clients-title" className="eyebrow clients-label" data-rise><span className="eyebrow-chip">01</span>Our Clients</h2>
+        <LogoMarquee logos={clients} />
       </div>
-      <LogoMarquee logos={clients} />
     </section>
 
     {/* About GAK: SalesPatriot's big statement, a short column of context, and its stacked "layer" cards,
